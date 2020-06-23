@@ -6,7 +6,6 @@ import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -24,20 +23,15 @@ class EnableAutoConfigurationSelectorTest {
 
     @Test
     public void selectImports() {
-        this.enableAutoConfigurationSelector.selectImports(AnnotationMetadata.introspect(SampleConfig.class));
+        String[] configNames = this.enableAutoConfigurationSelector.selectImports(AnnotationMetadata.introspect(SampleConfig.class));
+        assertThat(configNames).isNotNull();
+        assertThat(configNames).contains(SampleConfig.class.getName());
     }
 
     @Test
     public void springFactoriesLoader(){
         List<String> names = SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration.class, null);
         assertThat(names).contains(SampleConfig.class.getName());
-    }
-
-    @Test
-    public void annotationMetadata(){
-        AnnotationMetadata metadata = AnnotationMetadata.introspect(SampleConfig.class);
-        Map<String,Object> map = metadata.getAnnotationAttributes(EnableAutoConfiguration.class.getName(), true);
-
     }
 
 }
