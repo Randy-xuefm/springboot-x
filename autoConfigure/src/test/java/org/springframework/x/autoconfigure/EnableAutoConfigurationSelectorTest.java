@@ -2,6 +2,8 @@ package org.springframework.x.autoconfigure;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 import org.springframework.core.type.AnnotationMetadata;
 
@@ -34,4 +36,16 @@ class EnableAutoConfigurationSelectorTest {
         assertThat(names).contains(SampleConfig.class.getName());
     }
 
+    @Test
+    public void enableAutoCOnfigurationTest(){
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+
+        assertThat(context.getBean("123")).isNotNull();
+    }
+
+    @Configuration
+    @EnableAutoConfiguration
+    static class Config{
+
+    }
 }
