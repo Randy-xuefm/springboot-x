@@ -1,3 +1,6 @@
 org.springframework.x.autoconfigure.EnableAutoConfiguration=\
     org.springframework.x.autoconfigure.SampleConfig,\
-    org.springframework.x.autoconfigure.SampleConfig
+    org.springframework.x.autoconfigure.SampleConfig,\
+    org.springframework.x.autoconfigure.SampleConfigA,\
+    org.springframework.x.autoconfigure.SampleConfigB,\
+    org.springframework.x.autoconfigure.SampleConfigC
