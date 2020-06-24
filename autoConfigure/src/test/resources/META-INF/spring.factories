@@ -1,2 +1,3 @@
 org.springframework.x.autoconfigure.EnableAutoConfiguration=\
+    org.springframework.x.autoconfigure.SampleConfig,\
     org.springframework.x.autoconfigure.SampleConfig
