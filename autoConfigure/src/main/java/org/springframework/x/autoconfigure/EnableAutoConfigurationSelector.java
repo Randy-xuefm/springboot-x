@@ -57,10 +57,13 @@ public class EnableAutoConfigurationSelector implements DeferredImportSelector, 
 
         private ClassLoader classLoader;
 
+        private AnnotationMetadata annotationMetadata;
+
         @Override
         public void process(AnnotationMetadata metadata, DeferredImportSelector selector) {
             //验证metadata是否正确.
             Assert.state(selector instanceof EnableAutoConfigurationSelector,"AutoConfigurationGroup只能用在EnableAutoConfigurationSelector");
+            this.annotationMetadata = metadata;
         }
 
         @Override
@@ -80,7 +83,7 @@ public class EnableAutoConfigurationSelector implements DeferredImportSelector, 
             //@ConfigurationBefore,@ConfigurationAfter
             List<AutoConfigurationEnity> resultList = handleBeforeAndAfter(enityList);
 
-            return resultList.stream().map(entity -> new Entry(AnnotationMetadata.introspect(entity.source),entity.sourceClassName)).collect(Collectors.toList());
+            return resultList.stream().map(entity -> new Entry(this.annotationMetadata,entity.sourceClassName)).collect(Collectors.toList());
         }
 
         /**
