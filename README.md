@@ -14,3 +14,4 @@
 
 ## 后续计划 ##
 1. @ConditionalOnClass,@ConditionOnBean实现
+2. @ConfigurationProperties实现
