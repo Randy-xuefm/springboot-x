@@ -7,11 +7,11 @@
     - spring.factories SPI机制发现configuration
     - 实现@ConfigurationOrder,@ConfigurationBefore,@ConfigurationAfter
 
+2.  @ConditionalOnClass,@ConditionOnBean实现
 ## 未实现功能 ##
 
 1. @EnableAutoConfiguration Filter机制
 2. @EnableAutoConfiguration Listener机制
 
 ## 后续计划 ##
-1. @ConditionalOnClass,@ConditionOnBean实现
-2. @ConfigurationProperties实现
+1. @ConfigurationProperties实现
